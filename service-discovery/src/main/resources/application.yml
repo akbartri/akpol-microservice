@@ -1,0 +1,12 @@
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://localhost:8763/eureka/
+  datacenter: Indonesia-Jakarta
+  environment: production
+  instance: localhost
+
+server:
+  port: 8763

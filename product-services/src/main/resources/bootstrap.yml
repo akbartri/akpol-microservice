@@ -1,0 +1,14 @@
+#server:
+#  port: 8111
+#spring:
+#  application:
+#    name: PRODUCT-SERVICES
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    serviceUrl:
+#      defaultZone: http://localhost:8763/eureka/
+#  instance:
+#    instance-id: ${spring.application.name}-${random.int}
+#    hostname: localhost
