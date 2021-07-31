@@ -13,8 +13,8 @@ public class TransactionOrderDetail extends Audit implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "transaction_order_id")
-    private Long transactionOrderId;
+    @Column(name = "order_id")
+    private Long orderId;
     private Long price;
     private Long quantity;
     private Long totalPrice;
@@ -27,12 +27,12 @@ public class TransactionOrderDetail extends Audit implements Serializable {
         this.id = id;
     }
 
-    public Long getTransactionOrderId() {
-        return transactionOrderId;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setTransactionOrderId(Long transactionOrderId) {
-        this.transactionOrderId = transactionOrderId;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
     public Long getPrice() {

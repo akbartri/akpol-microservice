@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -29,7 +30,7 @@ public class MasterArticleServiceImpl implements MasterArticleService {
 
     @Override
     public ArticleDTO getById(String id) {
-        return masterArticleMapper.mapEntityToDTO(masterArticleRepository.getById(Long.parseLong(id)));
+        return masterArticleRepository.findById(Long.parseLong(id)).map(masterArticle -> masterArticleMapper.mapEntityToDTO(masterArticle)).orElse(null);
     }
 
     @Override
@@ -41,9 +42,9 @@ public class MasterArticleServiceImpl implements MasterArticleService {
 
     @Override
     public String deleteById(String id) {
-        MasterArticle existingMasterArticle = masterArticleRepository.getById(Long.parseLong(id));
-        if(existingMasterArticle != null) {
-            masterArticleRepository.delete(existingMasterArticle);
+        Optional<MasterArticle> existingMasterArticle = masterArticleRepository.findById(Long.parseLong(id));
+        if(existingMasterArticle.isPresent()) {
+            masterArticleRepository.delete(existingMasterArticle.get());
             return "success";
         } else {
             return "error";

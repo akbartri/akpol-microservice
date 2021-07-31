@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -29,7 +30,7 @@ public class TransactionShipmentServiceImpl implements TransactionShipmentServic
 
     @Override
     public ShipmentDTO getById(String id) {
-        return transactionShipmentMapper.mapEntityToDTO(transactionShipmentRepository.getById(Long.parseLong(id)));
+        return transactionShipmentRepository.findById(Long.parseLong(id)).map(transactionShipment -> transactionShipmentMapper.mapEntityToDTO(transactionShipment)).orElse(null);
     }
 
     @Override
@@ -41,9 +42,9 @@ public class TransactionShipmentServiceImpl implements TransactionShipmentServic
 
     @Override
     public String deleteById(String id) {
-        TransactionShipment existingTransactionShipment = transactionShipmentRepository.getById(Long.parseLong(id));
-        if(existingTransactionShipment != null) {
-            transactionShipmentRepository.delete(existingTransactionShipment);
+        Optional<TransactionShipment> existingTransactionShipment = transactionShipmentRepository.findById(Long.parseLong(id));
+        if(existingTransactionShipment.isPresent()) {
+            transactionShipmentRepository.delete(existingTransactionShipment.get());
             return "success";
         } else {
             return "error";

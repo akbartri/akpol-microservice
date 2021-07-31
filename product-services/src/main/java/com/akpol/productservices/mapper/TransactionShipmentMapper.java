@@ -13,7 +13,7 @@ public class TransactionShipmentMapper {
     public List<ShipmentDTO> mapEntityListToDTOList(List<TransactionShipment> transactionShipmentLista) {
         return transactionShipmentLista.stream().map(dataShipment -> {
             ShipmentDTO shipmentDTO = new ShipmentDTO();
-            shipmentDTO.setId(dataShipment.getId().toString());
+            shipmentDTO.setId(dataShipment.getId() != null ? dataShipment.getId().toString() : null);
             shipmentDTO.setShipmentName(dataShipment.getShipmentName());
             shipmentDTO.setStatus(dataShipment.getStatus());
 
@@ -24,7 +24,7 @@ public class TransactionShipmentMapper {
     public List<TransactionShipment> mapDTOListToEntityList(List<ShipmentDTO> shipmentDTOList) {
         return shipmentDTOList.stream().map(dataShipmentDTO -> {
             TransactionShipment shipment = new TransactionShipment();
-            shipment.setId(Long.parseLong(dataShipmentDTO.getId()));
+            shipment.setId(dataShipmentDTO.getId() != null ? Long.parseLong(dataShipmentDTO.getId()) : null);
             shipment.setShipmentName(dataShipmentDTO.getShipmentName());
             shipment.setStatus(dataShipmentDTO.getStatus());
 
@@ -33,20 +33,28 @@ public class TransactionShipmentMapper {
     }
 
     public ShipmentDTO mapEntityToDTO(TransactionShipment transactionShipment) {
-        ShipmentDTO shipmentDTO = new ShipmentDTO();
-        shipmentDTO.setId(transactionShipment.getId().toString());
-        shipmentDTO.setShipmentName(transactionShipment.getShipmentName());
-        shipmentDTO.setStatus(transactionShipment.getStatus());
+        if(transactionShipment != null) {
+            ShipmentDTO shipmentDTO = new ShipmentDTO();
+            shipmentDTO.setId(transactionShipment.getId() != null ? transactionShipment.getId().toString() : null);
+            shipmentDTO.setShipmentName(transactionShipment.getShipmentName());
+            shipmentDTO.setStatus(transactionShipment.getStatus());
 
-        return shipmentDTO;
+            return shipmentDTO;
+        } else {
+            return null;
+        }
     }
 
     public TransactionShipment mapDTOToEntity(ShipmentDTO shipmentDTO) {
-        TransactionShipment shipment = new TransactionShipment();
-        shipment.setId(Long.parseLong(shipmentDTO.getId()));
-        shipment.setShipmentName(shipmentDTO.getShipmentName());
-        shipment.setStatus(shipmentDTO.getStatus());
+        if(shipmentDTO != null) {
+            TransactionShipment shipment = new TransactionShipment();
+            shipment.setId(shipmentDTO.getId() != null ? Long.parseLong(shipmentDTO.getId()) : null);
+            shipment.setShipmentName(shipmentDTO.getShipmentName());
+            shipment.setStatus(shipmentDTO.getStatus());
 
-        return shipment;
+            return shipment;
+        } else {
+            return null;
+        }
     }
 }

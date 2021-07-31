@@ -15,7 +15,7 @@ public class MasterCategory extends Audit implements Serializable {
     private String name;
     private String description;
     private Long parent;
-    private boolean active;
+    private Boolean active;
 
     public Long getId() {
         return id;
@@ -49,11 +49,11 @@ public class MasterCategory extends Audit implements Serializable {
         this.parent = parent;
     }
 
-    public boolean isActive() {
+    public Boolean isActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 }

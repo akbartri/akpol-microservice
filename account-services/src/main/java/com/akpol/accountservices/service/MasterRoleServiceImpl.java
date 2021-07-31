@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -29,8 +30,8 @@ public class MasterRoleServiceImpl implements MasterRoleService {
 
     @Override
     public RoleDTO getById(String id) {
-        MasterRole masterRole = masterRoleRepository.getById(Long.parseLong(id));
-        return masterRoleMapper.mapEntityToDTO(masterRole);
+//        Optional<MasterRole> masterRole = masterRoleRepository.findById(Long.parseLong(id));
+        return masterRoleRepository.findById(Long.parseLong(id)).map(masterRole -> masterRoleMapper.mapEntityToDTO(masterRole)).orElse(null);
     }
 
     @Override
@@ -43,9 +44,9 @@ public class MasterRoleServiceImpl implements MasterRoleService {
 
     @Override
     public String deleteById(String id) {
-        MasterRole masterRole = masterRoleRepository.getById(Long.parseLong(id));
-        if(masterRole != null) {
-            masterRoleRepository.delete(masterRole);
+        Optional<MasterRole> masterRole = masterRoleRepository.findById(Long.parseLong(id));
+        if(masterRole.isPresent()) {
+            masterRoleRepository.delete(masterRole.get());
             return "success";
         } else {
             return "error";

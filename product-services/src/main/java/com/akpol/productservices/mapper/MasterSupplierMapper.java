@@ -13,7 +13,7 @@ public class MasterSupplierMapper {
     public List<SupplierDTO> mapEntityListToDTOList(List<MasterSupplier> masterSupplierList) {
         return masterSupplierList.stream().map(dataSupplier -> {
             SupplierDTO supplierDTO = new SupplierDTO();
-            supplierDTO.setId(dataSupplier.getId().toString());
+            supplierDTO.setId(dataSupplier.getId() != null ? dataSupplier.getId().toString() : null);
             supplierDTO.setName(dataSupplier.getName());
             supplierDTO.setAddress(dataSupplier.getAddress());
             supplierDTO.setPhone(dataSupplier.getPhone());
@@ -26,7 +26,7 @@ public class MasterSupplierMapper {
     public List<MasterSupplier> mapDTOListToEntityList(List<SupplierDTO> supplierDTOList) {
         return supplierDTOList.stream().map(dataSupplierDTO -> {
             MasterSupplier supplier = new MasterSupplier();
-            supplier.setId(Long.parseLong(dataSupplierDTO.getId()));
+            supplier.setId(dataSupplierDTO.getId() != null ? Long.parseLong(dataSupplierDTO.getId()) : null);
             supplier.setName(dataSupplierDTO.getName());
             supplier.setAddress(dataSupplierDTO.getAddress());
             supplier.setPhone(dataSupplierDTO.getPhone());
@@ -37,24 +37,32 @@ public class MasterSupplierMapper {
     }
 
     public SupplierDTO mapEntityToDTO(MasterSupplier masterSupplier) {
-        SupplierDTO supplierDTO = new SupplierDTO();
-        supplierDTO.setId(masterSupplier.getId().toString());
-        supplierDTO.setName(masterSupplier.getName());
-        supplierDTO.setAddress(masterSupplier.getAddress());
-        supplierDTO.setPhone(masterSupplier.getPhone());
-        supplierDTO.setSupplierLink(masterSupplier.getSupplierLink());
+        if(masterSupplier != null) {
+            SupplierDTO supplierDTO = new SupplierDTO();
+            supplierDTO.setId(masterSupplier.getId() != null ? masterSupplier.getId().toString() : null);
+            supplierDTO.setName(masterSupplier.getName());
+            supplierDTO.setAddress(masterSupplier.getAddress());
+            supplierDTO.setPhone(masterSupplier.getPhone());
+            supplierDTO.setSupplierLink(masterSupplier.getSupplierLink());
 
-        return supplierDTO;
+            return supplierDTO;
+        } else {
+            return null;
+        }
     }
 
     public MasterSupplier mapDTOToEntity(SupplierDTO supplierDTO) {
-        MasterSupplier supplier = new MasterSupplier();
-        supplier.setId(Long.parseLong(supplierDTO.getId()));
-        supplier.setName(supplierDTO.getName());
-        supplier.setAddress(supplierDTO.getAddress());
-        supplier.setPhone(supplierDTO.getPhone());
-        supplier.setSupplierLink(supplierDTO.getSupplierLink());
+        if(supplierDTO != null) {
+            MasterSupplier supplier = new MasterSupplier();
+            supplier.setId(supplierDTO.getId() != null ? Long.parseLong(supplierDTO.getId()) : null);
+            supplier.setName(supplierDTO.getName());
+            supplier.setAddress(supplierDTO.getAddress());
+            supplier.setPhone(supplierDTO.getPhone());
+            supplier.setSupplierLink(supplierDTO.getSupplierLink());
 
-        return supplier;
+            return supplier;
+        } else {
+            return null;
+        }
     }
 }

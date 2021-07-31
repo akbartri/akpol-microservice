@@ -13,7 +13,7 @@ public class TransactionPaymentMapper {
     public List<PaymentDTO> mapEntityListToDTOList(List<TransactionPayment> transactionPaymentList) {
         return transactionPaymentList.stream().map(dataPayment -> {
             PaymentDTO paymentDTO = new PaymentDTO();
-            paymentDTO.setId(dataPayment.getId().toString());
+            paymentDTO.setId(dataPayment.getId() != null ? dataPayment.getId().toString() : null);
             paymentDTO.setPaymentType(dataPayment.getPaymentType());
             paymentDTO.setPaymentName(dataPayment.getPaymentName());
             paymentDTO.setStatus(dataPayment.getStatus());
@@ -25,7 +25,7 @@ public class TransactionPaymentMapper {
     public List<TransactionPayment> mapDTOListToEntityList(List<PaymentDTO> paymentDTOList) {
         return paymentDTOList.stream().map(dataPaymentDTO -> {
             TransactionPayment payment = new TransactionPayment();
-            payment.setId(Long.parseLong(dataPaymentDTO.getId()));
+            payment.setId(dataPaymentDTO.getId() != null ? Long.parseLong(dataPaymentDTO.getId()) : null);
             payment.setPaymentName(dataPaymentDTO.getPaymentName());
             payment.setPaymentType(dataPaymentDTO.getPaymentType());
             payment.setStatus(dataPaymentDTO.getStatus());
@@ -35,22 +35,30 @@ public class TransactionPaymentMapper {
     }
 
     public PaymentDTO mapEntityToDTO(TransactionPayment transactionPayment) {
-        PaymentDTO paymentDTO = new PaymentDTO();
-        paymentDTO.setId(transactionPayment.getId().toString());
-        paymentDTO.setPaymentType(transactionPayment.getPaymentType());
-        paymentDTO.setPaymentName(transactionPayment.getPaymentName());
-        paymentDTO.setStatus(transactionPayment.getStatus());
+        if(transactionPayment != null) {
+            PaymentDTO paymentDTO = new PaymentDTO();
+            paymentDTO.setId(transactionPayment.getId() != null ? transactionPayment.getId().toString() : null);
+            paymentDTO.setPaymentType(transactionPayment.getPaymentType());
+            paymentDTO.setPaymentName(transactionPayment.getPaymentName());
+            paymentDTO.setStatus(transactionPayment.getStatus());
 
-        return paymentDTO;
+            return paymentDTO;
+        } else {
+            return null;
+        }
     }
 
     public TransactionPayment mapDTOToEntity(PaymentDTO paymentDTO) {
-        TransactionPayment payment = new TransactionPayment();
-        payment.setId(Long.parseLong(paymentDTO.getId()));
-        payment.setPaymentName(paymentDTO.getPaymentName());
-        payment.setPaymentType(paymentDTO.getPaymentType());
-        payment.setStatus(paymentDTO.getStatus());
+        if(paymentDTO != null) {
+            TransactionPayment payment = new TransactionPayment();
+            payment.setId(paymentDTO.getId() != null ? Long.parseLong(paymentDTO.getId()) : null);
+            payment.setPaymentName(paymentDTO.getPaymentName());
+            payment.setPaymentType(paymentDTO.getPaymentType());
+            payment.setStatus(paymentDTO.getStatus());
 
-        return payment;
+            return payment;
+        } else {
+            return null;
+        }
     }
 }

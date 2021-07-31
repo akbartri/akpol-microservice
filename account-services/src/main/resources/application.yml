@@ -1,5 +1,5 @@
 server:
-  port: 8112
+  port: 8111
 eureka:
   client:
     register-with-eureka: true

@@ -17,11 +17,11 @@ public class MasterArticleMapper {
     public List<ArticleDTO> mapEntityListToDTOList(List<MasterArticle> masterArticleList) {
         return masterArticleList.stream().map(dataArticle -> {
             ArticleDTO articleDTO = new ArticleDTO();
-            articleDTO.setId(dataArticle.getId().toString());
+            articleDTO.setId(dataArticle.getId() != null ? dataArticle.getId().toString() : null);
             articleDTO.setTitle(dataArticle.getTitle());
             articleDTO.setShortDescription(dataArticle.getShortDescription());
             articleDTO.setLongDescription(dataArticle.getLongDescription());
-            articleDTO.setActive(dataArticle.isActive() ? "true" : "false");
+            articleDTO.setActive(dataArticle.isActive() != null ? dataArticle.isActive() ? "true" : "false" : null);
 
             if(dataArticle.getStartDate() != null) {
                 articleDTO.setStartDate(dataArticle.getStartDate().format(formatter));
@@ -38,11 +38,11 @@ public class MasterArticleMapper {
     public List<MasterArticle> mapDTOListToEntityList(List<ArticleDTO> articleDTOList) {
         return articleDTOList.stream().map(dataArticleDTO -> {
             MasterArticle article = new MasterArticle();
-            article.setId(Long.parseLong(dataArticleDTO.getId()));
+            article.setId(dataArticleDTO.getId() != null ? Long.parseLong(dataArticleDTO.getId()) : null);
             article.setTitle(dataArticleDTO.getTitle());
             article.setShortDescription(dataArticleDTO.getShortDescription());
             article.setLongDescription(dataArticleDTO.getLongDescription());
-            article.setActive(dataArticleDTO.getActive().equalsIgnoreCase("true"));
+            article.setActive(dataArticleDTO.getActive() != null ? dataArticleDTO.getActive().equalsIgnoreCase("true") : null);
 
             if(dataArticleDTO.getStartDate() != null) {
                 article.setStartDate(LocalDateTime.parse(dataArticleDTO.getStartDate(), formatter));
@@ -57,40 +57,48 @@ public class MasterArticleMapper {
     }
 
     public ArticleDTO mapEntityToDTO(MasterArticle masterArticle) {
-        ArticleDTO articleDTO = new ArticleDTO();
-        articleDTO.setId(masterArticle.getId().toString());
-        articleDTO.setTitle(masterArticle.getTitle());
-        articleDTO.setShortDescription(masterArticle.getShortDescription());
-        articleDTO.setLongDescription(masterArticle.getLongDescription());
-        articleDTO.setActive(masterArticle.isActive() ? "true" : "false");
+        if(masterArticle != null) {
+            ArticleDTO articleDTO = new ArticleDTO();
+            articleDTO.setId(masterArticle.getId() != null ? masterArticle.getId().toString() : null);
+            articleDTO.setTitle(masterArticle.getTitle());
+            articleDTO.setShortDescription(masterArticle.getShortDescription());
+            articleDTO.setLongDescription(masterArticle.getLongDescription());
+            articleDTO.setActive(masterArticle.isActive() != null ? masterArticle.isActive() ? "true" : "false" : null);
 
-        if(masterArticle.getStartDate() != null) {
-            articleDTO.setStartDate(masterArticle.getStartDate().format(formatter));
+            if(masterArticle.getStartDate() != null) {
+                articleDTO.setStartDate(masterArticle.getStartDate().format(formatter));
+            }
+
+            if(masterArticle.getStartDate() != null) {
+                articleDTO.setEndDate(masterArticle.getEndDate().format(formatter));
+            }
+
+            return articleDTO;
+        } else {
+            return null;
         }
-
-        if(masterArticle.getStartDate() != null) {
-            articleDTO.setEndDate(masterArticle.getEndDate().format(formatter));
-        }
-
-        return articleDTO;
     }
 
     public MasterArticle mapDTOToEntity(ArticleDTO articleDTO) {
-        MasterArticle article = new MasterArticle();
-        article.setId(Long.parseLong(articleDTO.getId()));
-        article.setTitle(articleDTO.getTitle());
-        article.setShortDescription(articleDTO.getShortDescription());
-        article.setLongDescription(articleDTO.getLongDescription());
-        article.setActive(articleDTO.getActive().equalsIgnoreCase("true"));
+        if(articleDTO != null) {
+            MasterArticle article = new MasterArticle();
+            article.setId(articleDTO.getId() != null ? Long.parseLong(articleDTO.getId()) : null);
+            article.setTitle(articleDTO.getTitle());
+            article.setShortDescription(articleDTO.getShortDescription());
+            article.setLongDescription(articleDTO.getLongDescription());
+            article.setActive(articleDTO.getActive() != null ? articleDTO.getActive().equalsIgnoreCase("true") : null);
 
-        if(articleDTO.getStartDate() != null) {
-            article.setStartDate(LocalDateTime.parse(articleDTO.getStartDate(), formatter));
+            if(articleDTO.getStartDate() != null) {
+                article.setStartDate(LocalDateTime.parse(articleDTO.getStartDate(), formatter));
+            }
+
+            if(articleDTO.getEndDate() != null) {
+                article.setEndDate(LocalDateTime.parse(articleDTO.getEndDate(), formatter));
+            }
+
+            return article;
+        } else {
+            return null;
         }
-
-        if(articleDTO.getEndDate() != null) {
-            article.setEndDate(LocalDateTime.parse(articleDTO.getEndDate(), formatter));
-        }
-
-        return article;
     }
 }

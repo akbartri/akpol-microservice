@@ -29,7 +29,7 @@ public class MasterArticle extends Audit implements Serializable {
     @Column(name = "long_description")
     private String longDescription;
 
-    private boolean active;
+    private Boolean active;
 
     @Column(name = "start_date")
     private LocalDateTime startDate;
@@ -69,11 +69,11 @@ public class MasterArticle extends Audit implements Serializable {
         this.longDescription = longDescription;
     }
 
-    public boolean isActive() {
+    public Boolean isActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 

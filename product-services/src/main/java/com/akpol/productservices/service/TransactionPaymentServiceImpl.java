@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -29,7 +30,7 @@ public class TransactionPaymentServiceImpl implements TransactionPaymentService 
 
     @Override
     public PaymentDTO getById(String id) {
-        return transactionPaymentMapper.mapEntityToDTO(transactionPaymentRepository.getById(Long.parseLong(id)));
+        return transactionPaymentRepository.findById(Long.parseLong(id)).map(transactionPayment -> transactionPaymentMapper.mapEntityToDTO(transactionPayment)).orElse(null);
     }
 
     @Override
@@ -41,9 +42,9 @@ public class TransactionPaymentServiceImpl implements TransactionPaymentService 
 
     @Override
     public String deleteById(String id) {
-        TransactionPayment existingTransactionPayment = transactionPaymentRepository.getById(Long.parseLong(id));
-        if(existingTransactionPayment != null) {
-            transactionPaymentRepository.delete(existingTransactionPayment);
+        Optional<TransactionPayment> existingTransactionPayment = transactionPaymentRepository.findById(Long.parseLong(id));
+        if(existingTransactionPayment.isPresent()) {
+            transactionPaymentRepository.delete(existingTransactionPayment.get());
             return "success";
         } else {
             return "error";

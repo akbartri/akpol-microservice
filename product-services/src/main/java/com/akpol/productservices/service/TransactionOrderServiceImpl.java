@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -29,7 +30,7 @@ public class TransactionOrderServiceImpl implements TransactionOrderService {
 
     @Override
     public OrderDTO getById(String id) {
-        return transactionOrderMapper.mapEntityToDTO(transactionOrderRepository.getById(Long.parseLong(id)));
+        return transactionOrderRepository.findById(Long.parseLong(id)).map(transactionOrder -> transactionOrderMapper.mapEntityToDTO(transactionOrder)).orElse(null);
     }
 
     @Override
@@ -41,9 +42,9 @@ public class TransactionOrderServiceImpl implements TransactionOrderService {
 
     @Override
     public String deleteById(String id) {
-        TransactionOrder existingTransactionOrder = transactionOrderRepository.getById(Long.parseLong(id));
-        if(existingTransactionOrder != null) {
-            transactionOrderRepository.delete(existingTransactionOrder);
+        Optional<TransactionOrder> existingTransactionOrder = transactionOrderRepository.findById(Long.parseLong(id));
+        if(existingTransactionOrder.isPresent()) {
+            transactionOrderRepository.delete(existingTransactionOrder.get());
             return "success";
         } else {
             return "error";

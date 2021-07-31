@@ -24,7 +24,7 @@ public class MasterProductMapper {
     public List<ProductDTO> mapEntityListToDTOList(List<MasterProduct> masterProductList) {
         return masterProductList.stream().map(dataProduct -> {
             ProductDTO productDTO = new ProductDTO();
-            productDTO.setId(dataProduct.getId().toString());
+            productDTO.setId(dataProduct.getId() != null ? dataProduct.getId().toString() : null);
             productDTO.setName(dataProduct.getName());
             productDTO.setShortDescription(dataProduct.getShortDescription());
             productDTO.setLongDescription(dataProduct.getLongDescription());
@@ -50,7 +50,7 @@ public class MasterProductMapper {
     public List<MasterProduct> mapDTOListToEntityList(List<ProductDTO> productDTOList) {
         return productDTOList.stream().map(dataProductDTO -> {
             MasterProduct product = new MasterProduct();
-            product.setId(Long.parseLong(dataProductDTO.getId()));
+            product.setId(dataProductDTO.getId() != null ? Long.parseLong(dataProductDTO.getId()) : null);
             product.setName(dataProductDTO.getName());
             product.setShortDescription(dataProductDTO.getShortDescription());
             product.setLongDescription(dataProductDTO.getLongDescription());
@@ -74,49 +74,58 @@ public class MasterProductMapper {
     }
 
     public ProductDTO mapEntityToDTO(MasterProduct masterProduct) {
-        ProductDTO productDTO = new ProductDTO();
-        productDTO.setId(masterProduct.getId().toString());
-        productDTO.setName(masterProduct.getName());
-        productDTO.setShortDescription(masterProduct.getShortDescription());
-        productDTO.setLongDescription(masterProduct.getLongDescription());
+        if(masterProduct != null) {
+            ProductDTO productDTO = new ProductDTO();
+            productDTO.setId(masterProduct.getId() != null ? masterProduct.getId().toString() : null);
+            productDTO.setName(masterProduct.getName());
+            productDTO.setShortDescription(masterProduct.getShortDescription());
+            productDTO.setLongDescription(masterProduct.getLongDescription());
 
-        if(masterProduct.getSupplierId() != null) {
-            MasterSupplier supplier = masterSupplierRepository.getById(masterProduct.getSupplierId());
-            if(supplier != null) {
-                productDTO.setSupplierName(supplier.getName());
+            if(masterProduct.getSupplierId() != null) {
+                MasterSupplier supplier = masterSupplierRepository.getById(masterProduct.getSupplierId());
+                if(supplier != null) {
+                    productDTO.setSupplierName(supplier.getName());
+                }
             }
-        }
 
-        if(masterProduct.getCategoryId() != null) {
-            MasterCategory category = masterCategoryRepository.getById(masterProduct.getCategoryId());
-            if(category != null) {
-                productDTO.setCategoryName(category.getName());
+            if(masterProduct.getCategoryId() != null) {
+                MasterCategory category = masterCategoryRepository.getById(masterProduct.getCategoryId());
+                if(category != null) {
+                    productDTO.setCategoryName(category.getName());
+                }
             }
+
+            return productDTO;
+        } else {
+            return null;
         }
-        return productDTO;
     }
 
     public MasterProduct mapDTOToEntity(ProductDTO productDTO) {
-        MasterProduct product = new MasterProduct();
-        product.setId(Long.parseLong(productDTO.getId()));
-        product.setName(productDTO.getName());
-        product.setShortDescription(productDTO.getShortDescription());
-        product.setLongDescription(productDTO.getLongDescription());
+        if(productDTO != null) {
+            MasterProduct product = new MasterProduct();
+            product.setId(productDTO.getId() != null ? Long.parseLong(productDTO.getId()) : null);
+            product.setName(productDTO.getName());
+            product.setShortDescription(productDTO.getShortDescription());
+            product.setLongDescription(productDTO.getLongDescription());
 
-        if(productDTO.getSupplierName() != null) {
-            MasterSupplier masterSupplier = masterSupplierRepository.findByNameEquals(productDTO.getSupplierName());
-            if(masterSupplier != null) {
-                product.setSupplierId(masterSupplier.getId());
+            if(productDTO.getSupplierName() != null) {
+                MasterSupplier masterSupplier = masterSupplierRepository.findByNameEquals(productDTO.getSupplierName());
+                if(masterSupplier != null) {
+                    product.setSupplierId(masterSupplier.getId());
+                }
             }
-        }
 
-        if(productDTO.getCategoryName() != null) {
-            MasterCategory masterCategory = masterCategoryRepository.findByNameEquals(productDTO.getCategoryName());
-            if(masterCategory != null) {
-                product.setCategoryId(masterCategory.getId());
+            if(productDTO.getCategoryName() != null) {
+                MasterCategory masterCategory = masterCategoryRepository.findByNameEquals(productDTO.getCategoryName());
+                if(masterCategory != null) {
+                    product.setCategoryId(masterCategory.getId());
+                }
             }
-        }
 
-        return product;
+            return product;
+        } else {
+            return null;
+        }
     }
 }

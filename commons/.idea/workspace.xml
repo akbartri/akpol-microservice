@@ -1,7 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="afae54ae-bdd2-4c63-a230-25687a9af15c" name="Default Changelist" comment="" />
+    <list default="true" id="afae54ae-bdd2-4c63-a230-25687a9af15c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/util/ServiceUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../account-services/src/main/java/com/akpol/accountservices/controller/MasterMemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../account-services/src/main/java/com/akpol/accountservices/controller/MasterMemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../account-services/src/main/java/com/akpol/accountservices/mapper/MasterMemberMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../account-services/src/main/java/com/akpol/accountservices/mapper/MasterMemberMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../account-services/src/main/java/com/akpol/accountservices/mapper/MasterRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../account-services/src/main/java/com/akpol/accountservices/mapper/MasterRoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../account-services/src/main/java/com/akpol/accountservices/service/MasterMemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../account-services/src/main/java/com/akpol/accountservices/service/MasterMemberServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../account-services/src/main/java/com/akpol/accountservices/service/MasterRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../account-services/src/main/java/com/akpol/accountservices/service/MasterRoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../account-services/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../account-services/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/akpol/commons/model/MasterArticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/akpol/commons/model/MasterArticle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/akpol/commons/model/MasterCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/akpol/commons/model/MasterCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/akpol/commons/model/MasterMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/akpol/commons/model/MasterMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/akpol/commons/model/TransactionOrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/akpol/commons/model/TransactionOrderDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/akpol/commons/model/TransactionOrderDetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/akpol/commons/model/TransactionOrderDetail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/commons-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/commons-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/MasterArticleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/MasterArticleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/MasterCategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/MasterCategoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/MasterProductDetailMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/MasterProductDetailMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/MasterProductMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/MasterProductMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/MasterSupplierMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/MasterSupplierMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/TransactionOrderDetailMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/TransactionOrderDetailMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/TransactionOrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/TransactionOrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/TransactionPaymentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/TransactionPaymentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/TransactionShipmentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/mapper/TransactionShipmentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/MasterArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/MasterArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/MasterCategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/MasterCategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/MasterProductDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/MasterProductDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/MasterProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/MasterProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/MasterSupplierServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/MasterSupplierServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/TransactionOrderDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/TransactionOrderDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/TransactionOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/TransactionOrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/TransactionPaymentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/TransactionPaymentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/TransactionShipmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices/service/TransactionShipmentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product-services/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../product-services/src/main/resources/application.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +55,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -23,21 +66,33 @@
     </option>
   </component>
   <component name="ProjectId" id="1vU1uE4inFVhHvWfcj9eul8712K" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/akpol/commons/model" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/akpol/commons/model" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/../product-services/src/main/java/com/akpol/productservices" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../product-services" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -47,7 +102,7 @@
       <recent name="D:\backup\Ngoding\Non-project\akpol\commons\src\main\java\com\akpol\commons\model" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.AccountServicesApplication">
     <configuration name="commons [clean install]" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -74,6 +129,27 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <configuration name="AccountServicesApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="account-services" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.akpol.accountservices.AccountServicesApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductServicesApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="product-services" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.akpol.productservices.ProductServicesApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServiceDiscoveryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="service-discovery" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.akpol.servicediscovery.ServiceDiscoveryApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -86,6 +162,8 @@
       <option name="presentableId" value="Default" />
       <updated>1626602073122</updated>
       <workItem from="1626602076636" duration="11052000" />
+      <workItem from="1627296724497" duration="4382000" />
+      <workItem from="1627360894495" duration="25302000" />
     </task>
     <servers />
   </component>
@@ -97,38 +175,94 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1626634228027" />
-    <state x="765" y="213" key="#com.intellij.ide.util.MemberChooser" timestamp="1626672154954">
+    <state x="765" y="213" key="#com.intellij.ide.util.MemberChooser" timestamp="1627297690180">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="213" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1626672154954" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1626679998039">
+    <state x="765" y="213" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1627297690180" />
+    <state x="443" y="411" width="1061" height="579" key="#xdebugger.evaluate" timestamp="1627454115485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1626679998039" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1626679998038">
+    <state x="443" y="411" width="1061" height="579" key="#xdebugger.evaluate/0.0.1920.1040@0.0.1920.1040" timestamp="1627454115485" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1627545137481">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1626679998038" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1626679998038">
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1627545137481" />
+    <state x="740" y="216" key="FileChooserDialogImpl" timestamp="1627296771836">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1626679998038" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1626679998039">
+    <state x="740" y="216" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1627296771836" />
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1627653489267">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1626679998039" />
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1627653489267" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1627653489267">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1627653489267" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1627653489267">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1627653489267" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1627653489267">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1627653489267" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1627653489268">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1627653489268" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1627653489267">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1627653489267" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1627653489267">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1627653489267" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1627653489268">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1627653489268" />
+    <state width="1877" height="348" key="GridCell.Tab.2.bottom" timestamp="1627653489268">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1627653489268" />
+    <state width="1877" height="348" key="GridCell.Tab.2.center" timestamp="1627653489268">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1627653489268" />
+    <state width="1877" height="348" key="GridCell.Tab.2.left" timestamp="1627653489268">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1627653489268" />
+    <state width="1877" height="348" key="GridCell.Tab.2.right" timestamp="1627653489268">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1627653489268" />
     <state x="490" y="178" key="Maven.ArtifactSearchDialog" timestamp="1626603061193">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="490" y="178" key="Maven.ArtifactSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1626603061193" />
+    <state x="627" y="225" key="NewModule_or_Project.wizard" timestamp="1627296773459">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="627" y="225" key="NewModule_or_Project.wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1627296773459" />
     <state x="463" y="165" key="SettingsEditor" timestamp="1626634256201">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1626634256201" />
-    <state x="776" y="301" key="chooseDestDirectoryDialog" timestamp="1626602878450">
+    <state x="681" y="261" width="540" height="524" key="StructurePopup" timestamp="1627454316675">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="776" y="301" key="chooseDestDirectoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1626602878450" />
+    <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1627454316675" />
+    <state x="776" y="301" key="chooseDestDirectoryDialog" timestamp="1627297835258">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="776" y="301" key="chooseDestDirectoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1627297835258" />
+    <state x="667" y="276" width="817" height="488" key="find.popup" timestamp="1627371005355">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="276" width="817" height="488" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1627371005355" />
     <state x="342" y="224" key="new project wizard" timestamp="1626633710440">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -137,9 +271,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1626671892913" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1626618226792">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1627542497705">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1626618226792" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1627542497705" />
   </component>
 </project>

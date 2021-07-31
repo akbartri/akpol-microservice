@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -29,7 +30,7 @@ public class MasterProductDetailServiceImpl implements MasterProductDetailServic
 
     @Override
     public ProductDetailDTO getById(String id) {
-        return masterProductDetailMapper.mapEntityToDTO(masterProductDetailRepository.getById(Long.parseLong(id)));
+        return masterProductDetailRepository.findById(Long.parseLong(id)).map(masterProductDetail -> masterProductDetailMapper.mapEntityToDTO(masterProductDetail)).orElse(null);
     }
 
     @Override
@@ -41,9 +42,9 @@ public class MasterProductDetailServiceImpl implements MasterProductDetailServic
 
     @Override
     public String deleteById(String id) {
-        MasterProductDetail existingMasterProductDetail = masterProductDetailRepository.getById(Long.parseLong(id));
-        if(existingMasterProductDetail != null) {
-            masterProductDetailRepository.delete(existingMasterProductDetail);
+        Optional<MasterProductDetail> existingMasterProductDetail = masterProductDetailRepository.findById(Long.parseLong(id));
+        if(existingMasterProductDetail.isPresent()) {
+            masterProductDetailRepository.delete(existingMasterProductDetail.get());
             return "success";
         } else {
             return "error";

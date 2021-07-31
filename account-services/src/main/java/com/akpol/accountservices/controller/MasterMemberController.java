@@ -133,10 +133,14 @@ public class MasterMemberController {
 
         MemberDTO existingMemberDTO = masterMemberService.getById(memberDTO.getId());
         if(existingMemberDTO != null) {
-            String result = masterMemberService.deactivate(memberDTO);
-            if(result.equalsIgnoreCase("success")) {
-                responseDTO.setStatus("1");
-                responseDTO.setMessage("success");
+            if(existingMemberDTO.getActive().equalsIgnoreCase("true")) {
+                String result = masterMemberService.deactivate(existingMemberDTO);
+                if(result.equalsIgnoreCase("success")) {
+                    responseDTO.setStatus("1");
+                    responseDTO.setMessage("success");
+                }
+            } else {
+                responseDTO.setMessage("This user already inactive");
             }
         } else {
             responseDTO.setMessage("data not found");

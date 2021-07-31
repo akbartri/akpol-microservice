@@ -18,18 +18,18 @@ public class TransactionOrderDetailMapper {
     public List<OrderDetailDTO> mapEntityListToDTOList(List<TransactionOrderDetail> transactionOrderDetailList) {
         return transactionOrderDetailList.stream().map(dataOrderDetail -> {
             OrderDetailDTO orderDetailDTO = new OrderDetailDTO();
-            orderDetailDTO.setId(dataOrderDetail.getId().toString());
+            orderDetailDTO.setId(dataOrderDetail.getId() != null ? dataOrderDetail.getId().toString() : null);
 
-            if(dataOrderDetail.getTransactionOrderId() != null) {
-                TransactionOrder order = transactionOrderRepository.getById(dataOrderDetail.getTransactionOrderId());
+            if(dataOrderDetail.getOrderId() != null) {
+                TransactionOrder order = transactionOrderRepository.getById(dataOrderDetail.getOrderId());
                 if(order != null) {
                     orderDetailDTO.setOrderNo(order.getOrderNo());
                 }
             }
 
-            orderDetailDTO.setPrice(dataOrderDetail.getPrice().toString());
-            orderDetailDTO.setQuantity(dataOrderDetail.getQuantity().toString());
-            orderDetailDTO.setTotalPrice(dataOrderDetail.getTotalPrice().toString());
+            orderDetailDTO.setPrice(dataOrderDetail.getPrice() != null ? dataOrderDetail.getPrice().toString() : null);
+            orderDetailDTO.setQuantity(dataOrderDetail.getQuantity() != null ? dataOrderDetail.getQuantity().toString() : null);
+            orderDetailDTO.setTotalPrice(dataOrderDetail.getTotalPrice() != null ? dataOrderDetail.getTotalPrice().toString() : null);
 
             return orderDetailDTO;
         }).collect(Collectors.toList());
@@ -38,56 +38,64 @@ public class TransactionOrderDetailMapper {
     public List<TransactionOrderDetail> mapDTOListToEntityList(List<OrderDetailDTO> orderDetailDTOList) {
         return orderDetailDTOList.stream().map(dataOrderDetailDTO -> {
             TransactionOrderDetail orderDetail = new TransactionOrderDetail();
-            orderDetail.setId(Long.parseLong(dataOrderDetailDTO.getId()));
+            orderDetail.setId(dataOrderDetailDTO.getId() != null ? Long.parseLong(dataOrderDetailDTO.getId()) : null);
 
             if(dataOrderDetailDTO.getOrderNo() != null) {
                 TransactionOrder transactionOrder = transactionOrderRepository.findByOrderNoEquals(dataOrderDetailDTO.getOrderNo());
                 if(transactionOrder != null) {
-                    orderDetail.setTransactionOrderId(transactionOrder.getId());
+                    orderDetail.setOrderId(transactionOrder.getId());
                 }
             }
 
-            orderDetail.setPrice(Long.parseLong(dataOrderDetailDTO.getPrice()));
-            orderDetail.setQuantity(Long.parseLong(dataOrderDetailDTO.getQuantity()));
-            orderDetail.setTotalPrice(Long.parseLong(dataOrderDetailDTO.getTotalPrice()));
+            orderDetail.setPrice(dataOrderDetailDTO.getPrice() != null ? Long.parseLong(dataOrderDetailDTO.getPrice()) : null);
+            orderDetail.setQuantity(dataOrderDetailDTO.getQuantity() != null ? Long.parseLong(dataOrderDetailDTO.getQuantity()) : null);
+            orderDetail.setTotalPrice(dataOrderDetailDTO.getTotalPrice() != null ? Long.parseLong(dataOrderDetailDTO.getTotalPrice()) : null);
 
             return orderDetail;
         }).collect(Collectors.toList());
     }
 
     public OrderDetailDTO mapEntityToDTO(TransactionOrderDetail transactionOrderDetail) {
-        OrderDetailDTO orderDetailDTO = new OrderDetailDTO();
-        orderDetailDTO.setId(transactionOrderDetail.getId().toString());
+        if(transactionOrderDetail != null) {
+            OrderDetailDTO orderDetailDTO = new OrderDetailDTO();
+            orderDetailDTO.setId(transactionOrderDetail.getId() != null ? transactionOrderDetail.getId().toString() : null);
 
-        if(transactionOrderDetail.getTransactionOrderId() != null) {
-            TransactionOrder order = transactionOrderRepository.getById(transactionOrderDetail.getTransactionOrderId());
-            if(order != null) {
-                orderDetailDTO.setOrderNo(order.getOrderNo());
+            if(transactionOrderDetail.getOrderId() != null) {
+                TransactionOrder order = transactionOrderRepository.getById(transactionOrderDetail.getOrderId());
+                if(order != null) {
+                    orderDetailDTO.setOrderNo(order.getOrderNo());
+                }
             }
+
+            orderDetailDTO.setPrice(transactionOrderDetail.getPrice() != null ? transactionOrderDetail.getPrice().toString() : null);
+            orderDetailDTO.setQuantity(transactionOrderDetail.getQuantity() != null ? transactionOrderDetail.getQuantity().toString() : null);
+            orderDetailDTO.setTotalPrice(transactionOrderDetail.getTotalPrice() != null ? transactionOrderDetail.getTotalPrice().toString() : null);
+
+            return orderDetailDTO;
+        } else {
+            return null;
         }
-
-        orderDetailDTO.setPrice(transactionOrderDetail.getPrice().toString());
-        orderDetailDTO.setQuantity(transactionOrderDetail.getQuantity().toString());
-        orderDetailDTO.setTotalPrice(transactionOrderDetail.getTotalPrice().toString());
-
-        return orderDetailDTO;
     }
 
     public TransactionOrderDetail mapDTOToEntity(OrderDetailDTO orderDetailDTO) {
-        TransactionOrderDetail orderDetail = new TransactionOrderDetail();
-        orderDetail.setId(Long.parseLong(orderDetailDTO.getId()));
+        if(orderDetailDTO != null) {
+            TransactionOrderDetail orderDetail = new TransactionOrderDetail();
+            orderDetail.setId(orderDetailDTO.getId() != null ? Long.parseLong(orderDetailDTO.getId()) : null);
 
-        if(orderDetailDTO.getOrderNo() != null) {
-            TransactionOrder transactionOrder = transactionOrderRepository.findByOrderNoEquals(orderDetailDTO.getOrderNo());
-            if(transactionOrder != null) {
-                orderDetail.setTransactionOrderId(transactionOrder.getId());
+            if(orderDetailDTO.getOrderNo() != null) {
+                TransactionOrder transactionOrder = transactionOrderRepository.findByOrderNoEquals(orderDetailDTO.getOrderNo());
+                if(transactionOrder != null) {
+                    orderDetail.setOrderId(transactionOrder.getId());
+                }
             }
+
+            orderDetail.setPrice(orderDetailDTO.getPrice() != null ? Long.parseLong(orderDetailDTO.getPrice()) : null);
+            orderDetail.setQuantity(orderDetailDTO.getQuantity() != null ? Long.parseLong(orderDetailDTO.getQuantity()) : null);
+            orderDetail.setTotalPrice(orderDetailDTO.getTotalPrice() != null ? Long.parseLong(orderDetailDTO.getTotalPrice()) : null);
+
+            return orderDetail;
+        } else {
+            return null;
         }
-
-        orderDetail.setPrice(Long.parseLong(orderDetailDTO.getPrice()));
-        orderDetail.setQuantity(Long.parseLong(orderDetailDTO.getQuantity()));
-        orderDetail.setTotalPrice(Long.parseLong(orderDetailDTO.getTotalPrice()));
-
-        return orderDetail;
     }
 }

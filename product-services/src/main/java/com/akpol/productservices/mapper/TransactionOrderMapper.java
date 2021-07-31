@@ -3,13 +3,12 @@ package com.akpol.productservices.mapper;
 import com.akpol.commons.model.*;
 import com.akpol.commons.model.dto.MemberDTO;
 import com.akpol.commons.model.dto.OrderDTO;
-import com.akpol.commons.model.dto.ProductDTO;
-import com.akpol.productservices.repository.MasterCategoryRepository;
-import com.akpol.productservices.repository.MasterSupplierRepository;
+import com.akpol.commons.model.dto.ResponseDTO;
 import com.akpol.productservices.repository.TransactionPaymentRepository;
+import com.akpol.productservices.util.ServiceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -22,19 +21,31 @@ public class TransactionOrderMapper {
     private TransactionPaymentRepository transactionPaymentRepository;
 
     @Autowired
-    private RestTemplate restTemplate;
+    private ServiceUtil serviceUtil;
+
+    @Value("${akpol.account-base-url}")
+    private String accountBaseUrl;
+
+    @Value("${akpol.api.member}")
+    private String apiMember;
+
+    @Value("${akpol.api.member-name}")
+    private String apiMemberName;
 
     public List<OrderDTO> mapEntityListToDTOList(List<TransactionOrder> transactionOrderList) {
         return transactionOrderList.stream().map(dataOrder -> {
             OrderDTO orderDTO = new OrderDTO();
-            orderDTO.setId(dataOrder.getId().toString());
+            orderDTO.setId(dataOrder.getId() != null ? dataOrder.getId().toString() : null);
             orderDTO.setOrderNo(dataOrder.getOrderNo());
             orderDTO.setStatus(dataOrder.getStatus());
-            orderDTO.setTimestamp(dataOrder.getTimestamp().toString());
+            orderDTO.setTimestamp(dataOrder.getTimestamp() != null ? dataOrder.getTimestamp().toString() : null);
 
             if(dataOrder.getMemberId() != null) {
-                MemberDTO memberDTO = restTemplate.getForObject("http://localhost:8112/api/member/" + dataOrder.getMemberId(), MemberDTO.class);
-                if(memberDTO != null) {
+                String url = accountBaseUrl+apiMember+dataOrder.getMemberId();
+//                MemberDTO memberDTO = restTemplate.getForObject("http://localhost:8112/api/member/" + dataOrder.getMemberId(), MemberDTO.class);
+                ResponseDTO responseDTO = serviceUtil.getDTO(url);
+                if(responseDTO != null && responseDTO.getContents() != null) {
+                    MemberDTO memberDTO = (MemberDTO) responseDTO.getContents();
                     orderDTO.setMemberName(memberDTO.getFirstName() + " " + memberDTO.getLastName());
                 }
             }
@@ -53,14 +64,17 @@ public class TransactionOrderMapper {
     public List<TransactionOrder> mapDTOListToEntityList(List<OrderDTO> orderDTOList) {
         return orderDTOList.stream().map(dataOrderDTO -> {
             TransactionOrder order = new TransactionOrder();
-            order.setId(Long.parseLong(dataOrderDTO.getId()));
+            order.setId(dataOrderDTO.getId() != null ? Long.parseLong(dataOrderDTO.getId()) : null);
             order.setOrderNo(dataOrderDTO.getOrderNo());
             order.setStatus(dataOrderDTO.getStatus());
-            order.setTimestamp(Timestamp.valueOf(dataOrderDTO.getTimestamp()));
+            order.setTimestamp(dataOrderDTO.getTimestamp() != null ? Timestamp.valueOf(dataOrderDTO.getTimestamp()) : null);
 
             if(dataOrderDTO.getMemberName() != null) {
-                MemberDTO memberDTO = restTemplate.getForObject("http://localhost:8112/api/member/name/" + dataOrderDTO.getMemberName(), MemberDTO.class);
-                if(memberDTO != null) {
+                String url = accountBaseUrl+apiMemberName+dataOrderDTO.getMemberName();
+//                MemberDTO memberDTO = restTemplate.getForObject("http://localhost:8112/api/member/name/" + dataOrderDTO.getMemberName(), MemberDTO.class);
+                ResponseDTO responseDTO = serviceUtil.getDTO(url);
+                if(responseDTO != null && responseDTO.getContents() != null) {
+                    MemberDTO memberDTO = (MemberDTO) responseDTO.getContents();
                     order.setMemberId(Long.parseLong(memberDTO.getId()));
                 }
             }
@@ -79,50 +93,64 @@ public class TransactionOrderMapper {
     }
 
     public OrderDTO mapEntityToDTO(TransactionOrder transactionOrder) {
-        OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setId(transactionOrder.getId().toString());
-        orderDTO.setOrderNo(transactionOrder.getOrderNo());
-        orderDTO.setStatus(transactionOrder.getStatus());
-        orderDTO.setTimestamp(transactionOrder.getTimestamp().toString());
+        if(transactionOrder != null) {
+            OrderDTO orderDTO = new OrderDTO();
+            orderDTO.setId(transactionOrder.getId() != null ? transactionOrder.getId().toString() : null);
+            orderDTO.setOrderNo(transactionOrder.getOrderNo());
+            orderDTO.setStatus(transactionOrder.getStatus());
+            orderDTO.setTimestamp(transactionOrder.getTimestamp() != null ? transactionOrder.getTimestamp().toString() : null);
 
-        if(transactionOrder.getMemberId() != null) {
-            MemberDTO memberDTO = restTemplate.getForObject("http://localhost:8112/api/member/" + transactionOrder.getMemberId(), MemberDTO.class);
-            if(memberDTO != null) {
-                orderDTO.setMemberName(memberDTO.getFirstName() + " " + memberDTO.getLastName());
+            if(transactionOrder.getMemberId() != null) {
+                String url = accountBaseUrl+apiMember+transactionOrder.getMemberId();
+//            MemberDTO memberDTO = restTemplate.getForObject("http://localhost:8112/api/member/" + transactionOrder.getMemberId(), MemberDTO.class);
+                ResponseDTO responseDTO = serviceUtil.getDTO(url);
+                if(responseDTO != null && responseDTO.getContents() != null) {
+                    MemberDTO memberDTO = (MemberDTO) responseDTO.getContents();
+                    orderDTO.setMemberName(memberDTO.getFirstName() + " " + memberDTO.getLastName());
+                }
             }
-        }
 
-        if(transactionOrder.getPaymentId() != null) {
-            TransactionPayment payment = transactionPaymentRepository.getById(transactionOrder.getPaymentId());
-            if(payment != null) {
-                orderDTO.setPaymentName(payment.getPaymentName());
+            if(transactionOrder.getPaymentId() != null) {
+                TransactionPayment payment = transactionPaymentRepository.getById(transactionOrder.getPaymentId());
+                if(payment != null) {
+                    orderDTO.setPaymentName(payment.getPaymentName());
+                }
             }
-        }
 
-        return orderDTO;
+            return orderDTO;
+        } else {
+            return null;
+        }
     }
 
     public TransactionOrder mapDTOToEntity(OrderDTO orderDTO) {
-        TransactionOrder order = new TransactionOrder();
-        order.setId(Long.parseLong(orderDTO.getId()));
-        order.setOrderNo(orderDTO.getOrderNo());
-        order.setStatus(orderDTO.getStatus());
-        order.setTimestamp(Timestamp.valueOf(orderDTO.getTimestamp()));
+        if(orderDTO != null) {
+            TransactionOrder order = new TransactionOrder();
+            order.setId(orderDTO.getId() != null ? Long.parseLong(orderDTO.getId()) : null);
+            order.setOrderNo(orderDTO.getOrderNo());
+            order.setStatus(orderDTO.getStatus());
+            order.setTimestamp(orderDTO.getTimestamp() != null ? Timestamp.valueOf(orderDTO.getTimestamp()) : null);
 
-        if(orderDTO.getMemberName() != null) {
-            MemberDTO memberDTO = restTemplate.getForObject("http://localhost:8112/api/member/name/" + orderDTO.getMemberName(), MemberDTO.class);
-            if(memberDTO != null) {
-                order.setMemberId(Long.parseLong(memberDTO.getId()));
+            if(orderDTO.getMemberName() != null) {
+                String url = accountBaseUrl+apiMemberName+orderDTO.getMemberName();
+//            MemberDTO memberDTO = restTemplate.getForObject("http://localhost:8112/api/member/name/" + orderDTO.getMemberName(), MemberDTO.class);
+                ResponseDTO responseDTO = serviceUtil.getDTO(url);
+                if(responseDTO != null && responseDTO.getContents() != null) {
+                    MemberDTO memberDTO = (MemberDTO) responseDTO.getContents();
+                    order.setMemberId(Long.parseLong(memberDTO.getId()));
+                }
             }
-        }
 
-        if(orderDTO.getPaymentName() != null) {
-            TransactionPayment payment = transactionPaymentRepository.findByPaymentNameEquals(orderDTO.getPaymentName());
-            if(payment != null) {
-                order.setPaymentId(payment.getId());
+            if(orderDTO.getPaymentName() != null) {
+                TransactionPayment payment = transactionPaymentRepository.findByPaymentNameEquals(orderDTO.getPaymentName());
+                if(payment != null) {
+                    order.setPaymentId(payment.getId());
+                }
             }
-        }
 
-        return order;
+            return order;
+        } else {
+            return null;
+        }
     }
 }

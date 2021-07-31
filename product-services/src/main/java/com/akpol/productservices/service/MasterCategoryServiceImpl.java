@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -29,7 +30,7 @@ public class MasterCategoryServiceImpl implements MasterCategoryService {
 
     @Override
     public CategoryDTO getById(String id) {
-        return masterCategoryMapper.mapEntityToDTO(masterCategoryRepository.getById(Long.parseLong(id)));
+        return masterCategoryRepository.findById(Long.parseLong(id)).map(masterCategory -> masterCategoryMapper.mapEntityToDTO(masterCategory)).orElse(null);
     }
 
     @Override
@@ -41,9 +42,9 @@ public class MasterCategoryServiceImpl implements MasterCategoryService {
 
     @Override
     public String deleteById(String id) {
-        MasterCategory existingMasterCategory = masterCategoryRepository.getById(Long.parseLong(id));
-        if(existingMasterCategory != null) {
-            masterCategoryRepository.delete(existingMasterCategory);
+        Optional<MasterCategory> existingMasterCategory = masterCategoryRepository.findById(Long.parseLong(id));
+        if(existingMasterCategory.isPresent()) {
+            masterCategoryRepository.delete(existingMasterCategory.get());
             return "success";
         } else {
             return "error";

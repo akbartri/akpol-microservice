@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -29,7 +30,7 @@ public class MasterMemberServiceImpl implements MasterMemberService {
 
     @Override
     public MemberDTO getById(String id) {
-        return masterMemberMapper.mapEntityToDTO(masterMemberRepository.getById(Long.parseLong(id)));
+        return masterMemberRepository.findById(Long.parseLong(id)).map(member -> masterMemberMapper.mapEntityToDTO(member)).orElse(null);
     }
 
     @Override
@@ -42,9 +43,9 @@ public class MasterMemberServiceImpl implements MasterMemberService {
 
     @Override
     public String deleteById(String id) {
-        MasterMember masterMember = masterMemberRepository.getById(Long.parseLong(id));
-        if(masterMember != null) {
-            masterMemberRepository.delete(masterMember);
+        Optional<MasterMember> masterMember = masterMemberRepository.findById(Long.parseLong(id));
+        if(masterMember.isPresent()) {
+            masterMemberRepository.delete(masterMember.get());
             return "success";
         } else {
             return "error";
@@ -53,21 +54,26 @@ public class MasterMemberServiceImpl implements MasterMemberService {
 
     @Override
     public String deactivate(MemberDTO memberDTO) {
-        MasterMember masterMember = masterMemberRepository.findByFirstNameEquals(memberDTO.getFirstName());
-        if(masterMember != null) {
-            masterMember.setActive(false);
-            masterMemberRepository.save(masterMember);
-            return "success";
-        } else {
-            masterMember = masterMemberRepository.findByLastNameEquals(memberDTO.getLastName());
-            if(masterMember != null) {
-                masterMember.setActive(false);
-                masterMemberRepository.save(masterMember);
-                return "success";
-            } else {
-                return "error";
-            }
-        }
+//        MasterMember masterMember = masterMemberRepository.findByFirstNameEquals(memberDTO.getFirstName());
+//        if(masterMember != null) {
+//            masterMember.setActive(false);
+//            masterMemberRepository.save(masterMember);
+//            return "success";
+//        } else {
+//            masterMember = masterMemberRepository.findByLastNameEquals(memberDTO.getLastName());
+//            if(masterMember != null) {
+//                masterMember.setActive(false);
+//                masterMemberRepository.save(masterMember);
+//                return "success";
+//            } else {
+//                return "error";
+//            }
+//        }
+
+        MasterMember masterMember = masterMemberMapper.mapDTOToEntity(memberDTO);
+        masterMember.setActive(false);
+        masterMemberRepository.save(masterMember);
+        return "success";
     }
 
     @Override
